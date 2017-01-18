@@ -298,10 +298,11 @@ public class FormelUmsteller extends JFrame {
 	public static ArrayList<String> plusAdden1() {
 	    //Das macht Paul
 		if(listEingabe1.get(0) != "+" || listEingabe1.get(0) != "-"){
+			listEingabe1.add("");
 			for (int i = 0; i < listEingabe1.size(); i++){
-				listEingabe1.set(-i+1+listEingabe1.size(),listEingabe1.get(-i+1+listEingabe1.size()));
-			}		
-		    listEingabe1.set(0,"+");
+				listEingabe1.set(-i+listEingabe1.size(),listEingabe1.get(-i-1+listEingabe1.size()));
+			}
+		//listEingabe1.set(0,"+");
 		}
 		return listEingabe1;
 	}
