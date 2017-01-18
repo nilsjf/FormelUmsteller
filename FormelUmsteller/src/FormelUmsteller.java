@@ -92,13 +92,13 @@ public class FormelUmsteller extends JFrame {
 				createArrayString2();
 				createListEingabe1();
 				createListEingabe2();
+				plusAdden1();
+				//plusAdden2();
 				
-				//druck();
+				druck();
 				
 				xSeiteSuchen();
-				xPosSuchen();
-				plusAdden1();
-				plusAdden2();
+				//xPosSuchen();
 				umsteller();
 				
 			}
@@ -261,7 +261,8 @@ public class FormelUmsteller extends JFrame {
 	}
 	
 	public static int xSeiteSuchen() {
-	    //Das macht Johann
+	    int xSeite=0;
+		//Das macht Johann
 		/*public static int xSeite = 0;
 		for (int i...{
 		    if (listEingabe1.get(i).equals("x")
@@ -270,12 +271,13 @@ public class FormelUmsteller extends JFrame {
 		for (int i...{
 		    if (listEingabe2.get(i).equals("x")
 		        xSeite = 2;
-		}
-		return xSeite;*/
+		}*/
+		return xSeite;
 	}
 	
 	public static int xPosSuchen() {
-	    //Das macht Lars
+	    int xPos=0;
+		//Das macht Lars
 	    /*public static int xPos = 0;
 	    if (xSeite == 1) {
             for (int i...) {
@@ -289,22 +291,26 @@ public class FormelUmsteller extends JFrame {
                 if (listEingabe2.get(i).equals("x")
                     xPos = i;
             }
-	    }
-	    return xPos;*/
+	    }*/
+	    return xPos ;
 	}
 	
 	public static ArrayList<String> plusAdden1() {
 	    //Das macht Paul
-		/*if(xSeite == 1 && listEingabe1.get(0) == \\d)
-		    listEingabe1.get(0) = "+"
-		return listEingabe1;*/
+		if(listEingabe1.get(0) != "+" || listEingabe1.get(0) != "-"){
+			for (int i = 0; i < listEingabe1.size(); i++){
+				listEingabe1.set(-i+1+listEingabe1.size(),listEingabe1.get(-i+1+listEingabe1.size()));
+			}		
+		    listEingabe1.set(0,"+");
+		}
+		return listEingabe1;
 	}
 	
 	public static ArrayList<String> plusAdden2() {
 	    //Das macht Paul
 		/*if(xSeite == 2 && listEingabe2.get(0) == \\d)
-		    listEingabe2.get(0) = "+"
-		return listEingabe2;*/
+		    listEingabe2.get(0) = "+"*/
+		return listEingabe2;
 	}
 	
 	public static void umsteller() {
