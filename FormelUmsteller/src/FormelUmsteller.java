@@ -94,6 +94,7 @@ public class FormelUmsteller extends JFrame {
 				createListEingabe2();
 				plusAdden1();
 				//plusAdden2();
+				//test();
 				
 				druck();
 				
