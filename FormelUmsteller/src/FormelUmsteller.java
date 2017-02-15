@@ -272,20 +272,24 @@ public class FormelUmsteller extends JFrame {
 	public static int xPosSuchen() {
 	    int xPos=0;
 		//Das macht Lars
-	    /*public static int xPos = 0;
-	    if (xSeite == 1) {
-            for (int i...) {
-                if (listEingabe1.get(i).equals("x")
+	    public static int xPos = 0;
+	      
+	    if(xSeite == 1){
+	    	for(int i=0; i<listEingabe1.size(); i++){
+				if(listEingabe.get(i).equals("x")){
+					xPos = i;
+				}
+			}
+		}
+			
+			
+	    if (xSeite == 2) {
+            for (int i=0; i<listEingabe2.size(); i++) {
+                if (listEingabe2.get(i).equals("x")){
                     xPos = i;
+                }
             }
 	    }
-	    
-	    if (xSeite == 2) {
-            for (int i...) {
-                if (listEingabe2.get(i).equals("x")
-                    xPos = i;
-            }
-	    }*/
 	    return xPos ;
 	}
 	
