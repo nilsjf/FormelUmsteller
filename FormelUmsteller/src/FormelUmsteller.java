@@ -26,6 +26,8 @@ public class FormelUmsteller extends JFrame {
 	public static char[] arrayString1;
 	public static char[] arrayString2;
 	
+	public static int xSeite = 0;
+	
 	public static ArrayList<String> zahlen1 = new ArrayList<String>();
 	public static ArrayList<String> zahlen2 = new ArrayList<String>();
 	
@@ -93,14 +95,11 @@ public class FormelUmsteller extends JFrame {
 				createListEingabe1();
 				createListEingabe2();
 				plusAdden1();
-				//plusAdden2();
-				//test();
-				
-				druck();
-				
+				plusAdden2();
 				xSeiteSuchen();
 				//xPosSuchen();
-				umsteller();
+				summandenUmsteller();
+				druck();
 				
 			}
 		});
@@ -253,20 +252,34 @@ public class FormelUmsteller extends JFrame {
 	}
 	
 	
-	
+	//Hier wird die Seite wo x ist herausgefunden und in xSeite ausgegeben
 	public static int xSeiteSuchen() {
-	    int xSeite=0;
+		for(int i=0; i<listEingabe1.size(); i++){
+			if(listEingabe1.get(i).equals("x") == true){
+				xSeite=1;
+			}
+		}
+		for(int i=0; i<listEingabe2.size(); i++){
+			if(listEingabe2.get(i).equals("x") == true){
+				xSeite=2;
+			}
+			/*else{
+				System.out.println("Kein x vorhanden, bitte x hinzufügen");
+			}*/
+		}
+		
+		return xSeite;
+		/*int xSeite=0;
 		//Das macht Johann
 		/*public static int xSeite = 0;
 		for (int i...{
-		    if (listEingabe1.get(i).equals("x")
+		    if (listEingabe1.get(i).equals("x")mm
 		        xSeite = 1;
 		}
 		for (int i...{
 		    if (listEingabe2.get(i).equals("x")
 		        xSeite = 2;
 		}*/
-		return xSeite;
 	}
 	
 	public static int xPosSuchen() {
@@ -308,14 +321,84 @@ public class FormelUmsteller extends JFrame {
 		return listEingabe2;
 	}
 	
-	public static void umsteller() {
-		//Das macht Nils
+	public static void summandenUmsteller() {
+		if(xSeite == 1) {
+			for(int crtPos1 = 0; crtPos1 < arrayString1.length; crtPos1++) {
+				int lastPos1 = crtPos1 - 1;
+				int nextPos1 = crtPos1 + 1;
+				int x = nextPos1;
+				
+				if(listEingabe1.get(crtPos1).equals("+") || listEingabe1.get(crtPos1).equals("-") || listEingabe1.get(crtPos1).equals("*") || listEingabe1.get(crtPos1).equals("/")) {
+					zs1.add(listEingabe1.get(crtPos1));
+					
+					if(listEingabe1.get(nextPos1).equals("(")) {
+						for(int i = x; i < arrayString1.length; i++) {
+							if(listEingabe1.get(i).equals(")") == false) {
+								zs1.add(listEingabe1.get(i));
+								continue;
+							}
+							else if(listEingabe1.get(i).equals(")") && zs1.contains("x") == false) {
+								zs1.add(listEingabe1.get(i));
+								if(zs1.get(0).equals("+")) {
+									zs1.set(0, "-");
+								}
+								else if(zs1.get(0).equals("-")) {
+									zs1.set(0, "+");
+								}
+								else if(zs1.get(0).equals("*")) {
+									zs1.set(0, "/");
+								}
+								else if(zs1.get(0).equals("/")) {
+									zs1.set(0, "*");
+								}
+								listEingabe2.add(zs1.toString());
+								zs1.clear();
+							}
+							else {
+								zs1.clear();
+							}
+						}
+					}
+					
+					for(int j = x; j < arrayString1.length; j++) {
+						if(listEingabe1.get(j).equals("+") == false || listEingabe1.get(j).equals("-") == false || listEingabe1.get(j).equals("*") == false || listEingabe1.get(j).equals("/") == false) {
+							zs1.add(listEingabe1.get(j));
+						}
+						else if(listEingabe1.get(crtPos1).equals("+") || listEingabe1.get(crtPos1).equals("-") || listEingabe1.get(crtPos1).equals("*") || listEingabe1.get(crtPos1).equals("/") && zs1.contains("x") == false) {
+							if(zs1.get(0).equals("+")) {
+								zs1.set(0, "-");
+							}
+							else if(zs1.get(0).equals("-")) {
+								zs1.set(0, "+");
+							}
+							else if(zs1.get(0).equals("*")) {
+								zs1.set(0, "/");
+							}
+							else if(zs1.get(0).equals("/")) {
+								zs1.set(0, "*");
+							}
+							listEingabe2.add(zs1.toString());
+							zs1.clear();
+						}
+						else {
+							zs1.clear();
+						}
+					}
+				}
+			}
+			for (int c1 = 0; c1 < listEingabe2.size(); c1++) {
+				if(listEingabe2.get(c1).startsWith("[")) {
+					String ope = listEingabe2.get(c1).replaceAll("\\[[]]", "");
+					listEingabe2.set(c1, ope);
+				}
+			}
+		}	
 	}
 	
 	public static void druck() {
 		for (int i = 0; i < listEingabe1.size(); i++)
 			System.out.println(listEingabe1.get(i));
-		System.out.println("----------------");
+		System.out.println("===");
 		for (int j = 0; j < listEingabe2.size(); j++)
 			System.out.println(listEingabe2.get(j));
 		System.out.println("----------------");
