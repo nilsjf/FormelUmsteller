@@ -290,7 +290,8 @@ public class FormelUmsteller extends JFrame {
                 }
             }
 	    }
-	    return xPos ;
+	    return xPos ;//mmm
+	    
 	}
 	
 	public static ArrayList<String> plusAdden1() {
