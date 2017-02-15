@@ -303,7 +303,7 @@ public class FormelUmsteller extends JFrame {
                 }
             }
 	    }
-	    return xPos ;//mmm
+	    return xPos ;
 	    
 	}
 	
