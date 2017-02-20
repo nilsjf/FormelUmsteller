@@ -345,12 +345,6 @@ public class FormelUmsteller extends JFrame {
 								else if(zs1.get(0).equals("-")) {
 									zs1.set(0, "+");
 								}
-								else if(zs1.get(0).equals("*")) {
-									zs1.set(0, "/");
-								}
-								else if(zs1.get(0).equals("/")) {
-									zs1.set(0, "*");
-								}
 								listEingabe2.add(zs1.toString());
 								zs1.clear();
 							}
@@ -361,21 +355,23 @@ public class FormelUmsteller extends JFrame {
 					}
 					
 					for(int j = x; j < arrayString1.length; j++) {
-						if(listEingabe1.get(j).equals("+") == false || listEingabe1.get(j).equals("-") == false || listEingabe1.get(j).equals("*") == false || listEingabe1.get(j).equals("/") == false) {
-							zs1.add(listEingabe1.get(j));
+						if(listEingabe1.get(j).matches("\\d")) {
+							int h=j;
+							while(listEingabe1.get(h).equals("+") == false && listEingabe1.get(h).equals("-") == false) {
+								zs1.add(listEingabe1.get(h));
+								h++;
+							}
 						}
-						else if(listEingabe1.get(crtPos1).equals("+") || listEingabe1.get(crtPos1).equals("-") || listEingabe1.get(crtPos1).equals("*") || listEingabe1.get(crtPos1).equals("/") && zs1.contains("x") == false) {
+						else if(zs1.contains("x")) {
+							zs1.clear();
+							continue;
+						}
+						else if(listEingabe1.get(j).matches("\\d")) {
 							if(zs1.get(0).equals("+")) {
 								zs1.set(0, "-");
 							}
 							else if(zs1.get(0).equals("-")) {
 								zs1.set(0, "+");
-							}
-							else if(zs1.get(0).equals("*")) {
-								zs1.set(0, "/");
-							}
-							else if(zs1.get(0).equals("/")) {
-								zs1.set(0, "*");
 							}
 							listEingabe2.add(zs1.toString());
 							zs1.clear();
