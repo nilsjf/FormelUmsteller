@@ -329,10 +329,11 @@ public class FormelUmsteller extends JFrame {
 				int nextPos1 = crtPos1 + 1;
 				int x = nextPos1;
 				
-				if(listEingabe1.get(crtPos1).equals("+") || listEingabe1.get(crtPos1).equals("-") || listEingabe1.get(crtPos1).equals("*") || listEingabe1.get(crtPos1).equals("/")) {
+				if(listEingabe1.get(crtPos1).equals("+") || listEingabe1.get(crtPos1).equals("-")) {
 					zs1.add(listEingabe1.get(crtPos1));
 					
 					if(listEingabe1.get(nextPos1).equals("(")) {
+						
 						for(int i = x; i < arrayString1.length; i++) {
 							if(listEingabe1.get(i).equals(")") == false) {
 								zs1.add(listEingabe1.get(i));
