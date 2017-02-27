@@ -27,6 +27,7 @@ public class FormelUmsteller extends JFrame {
 	public static char[] arrayString2;
 	
 	public static int xSeite = 0;
+	public static int xPos = 0;
 	
 	public static ArrayList<String> zahlen1 = new ArrayList<String>();
 	public static ArrayList<String> zahlen2 = new ArrayList<String>();
@@ -285,11 +286,11 @@ public class FormelUmsteller extends JFrame {
 	public static int xPosSuchen() {
 	    int xPos=0;
 		//Das macht Lars
-	    public static int xPos = 0;
+	    
 	      
 	    if(xSeite == 1){
 	    	for(int i=0; i<listEingabe1.size(); i++){
-				if(listEingabe.get(i).equals("x")){
+				if(listEingabe1.get(i).equals("x")){
 					xPos = i;
 				}
 			}
